@@ -13,12 +13,14 @@
 * **Interactive Envelope:** A sliding silk-textured envelope that reveals a personal letter.
 * **Vinyl Player:** A custom-styled music widget with a spinning vinyl animation made using javascript.
 * **Winter Vibes:** Smooth falling snow animation and a soft pastel aesthetic.
-
+* **Message Text Field:** An integrated contact form—any messages sent through the text area are delivered straight to my email.
+  
 ## 🚀 Getting Started
 1. Clone the repository.
 2. Ensure your music files (e.g., `music1.mp3`) are in the root folder.
 3. Make sure `winterlogo.png` is present for the tab icon.
-4. Open `index.html` in your favorite browser.
+4. **Email Integration:** Ensure the form backend (like Formspree or a custom script) is configured with your email address to receive messages. I suggest EmailJs for customization.
+5. Open `index.html` in your favorite browser.
 
 ## 🛠️ Customization
 To change the music playlist, update the `tracks` array in the JavaScript file:
