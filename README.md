@@ -17,7 +17,7 @@
   
 ## 🚀 Getting Started
 1. Clone the repository.
-2. Ensure the music files (e.g., `music1.mp3`) are in the root folder.
+2. Ensure the music files (e.g., `iu - i stan u.mp3`) are in the root folder.
 3. Make sure `winterlogo.png`, `winter.png`, and `winterlogo.png` are present.
 4. **Email Integration:** Ensure the form backend (like EmailJs or a custom script) is configured with your email address to receive messages. 
 5. Open `index.html` in your favorite browser.
