@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="winterlogo.png">
+    <title>Letter for Winter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body onload="createSnow()">
+
+    <div class="music-player-ribbon" id="player-ribbon" onclick="togglePlayer()">
+        <span class="music-icon">♫</span>
+    </div>
+
+    <div class="music-widget hidden" id="music-widget">
+        <div class="close-player" onclick="togglePlayer()">»</div>
+        <div class="vinyl-container">
+            <div class="vinyl" id="vinyl-disk">
+                <div class="vinyl-streaks"></div>
+                <div class="vinyl-center"></div>
+            </div>
+        </div>
+        <div class="music-info">
+            <p id="track-name">iu - i stan u</p>
+            <div class="volume-controls">
+                <span>🔈</span>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="changeVolume()">
+                <span>🔊</span>
+            </div>
+        </div>
+        <div class="controls">
+            <span onclick="prevTrack()">⏮</span>
+            <span id="play-pause" onclick="togglePlay()">⏸</span>
+            <span onclick="nextTrack()">⏭</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div id="pouch-wrapper" class="pouch-wrapper">
+            <div class="silk-envelope vibrate-only" onclick="revealLetter()">
+                <div class="pattern-flap" id="pouch-flap">
+                    <div class="snowflake-seal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#5A7684" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <line x1="22" y1="12" x2="2" y2="12"></line>
+                            <line x1="19.07" y1="4.93" x2="4.93" y2="19.07"></line>
+                            <line x1="19.07" y1="19.07" x2="4.93" y2="4.93"></line>
+                            <path d="M9 5l3 3 3-3"></path>
+                            <path d="M9 19l3-3 3 3"></path>
+                            <path d="M5 9l3 3-3 3"></path>
+                            <path d="M19 9l-3 3 3 3"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="pouch-base"></div>
+            </div>
+            <p class="guide-text big-guide">Open me! ♥</p>
+        </div>
+
+        <div id="letter-scene" class="letter-scene hidden">
+            <div class="content-wrapper">
+                <div class="classic-card">
+                    <div class="ribbon-link" onclick="resetLetter()">
+                        <span class="back-link-text">🡨 Back</span>
+                    </div>
+                    
+                    <div class="card-layout">
+                        <div class="text-area">
+                            <div class="letter-header">
+                                <h1 class="to-label">윈터에게</h1>
+                                <p class="translation-hint">(To Winter)</p>
+                                <h2 class="hi-label">안녕, 윈터! ♥</h2>
+                                <p class="translation-hint">(Hi Winter! ♥)</p>
+                            </div>
+                            <div class="letter-body">
+                                <p>윈터는 아마 모르겠지만, 나를 여러 방면에서 구해주어서 정말 고맙다는 말을 꼭 하고 싶었어. 윈터의 목소리와 미소, 그리고 강인함은 모든 것이 버겁게 느껴지던 날들에 나에게 큰 위로가 되었어. 윈터는 내가 계속 나아갈 수 있게 도와준 작은 빛이 되어주었어.</p>
+                                <span class="translation-block">(I just wanted to say thank you for saving me in ways you probably don’t even know. Your voice, your smile, and your strength have given me comfort during days when things felt heavy. You became a small light that helped me keep going.)</span>
+                                
+                                <p>윈터를 직접 만나거나 윈터가 나를 알아주지 않아도 괜찮아. 나는 지금처럼 멀리서 응원하는 것만으로도 충분히 행복해. 부디 지금처럼 계속 빛나주길, 그리고 건강하고 많은 사람들에게 영감을 주는 따뜻하고 다정한 사람으로 남아주길 바랄게.</p>
+                                <span class="translation-block">(I don’t need to meet you or be known by you, and I’m already happy just cheering for you from afar. Please keep shining, staying healthy, and being the warm, gentle person that inspires so many of us.)</span>
+                            </div>
+                            <div class="signature-section">
+                                <p>존경과 조용한 사랑을 담아,<br><span class="translation-hint">(With lots of respect and quiet love,)</span></p>
+                                <p>윈터의 팬 (˶˃ ᵕ ˂˶).ᐟ.ᐟ<br><span class="translation-hint">(Your fan (˶˃ ᵕ ˂˶).ᐟ.ᐟ)</span></p>
+                            </div>
+                        </div>
+
+                        <div class="photo-area" id="photo-col">
+                            <div class="frame main-winter-photo hover-cute">
+                                <img src="winter.png" alt="Winter">
+                            </div>
+                            <div class="frame transparent-sticker hover-cute">
+                                <img src="cinaheart.png" alt="Cinaheart">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lower-section">
+                    <div class="interaction-grid">
+                        <div class="form-side">
+                            <p class="handwritten-title">Feel free to send a message!</p>
+                            <textarea id="reply-message" class="ivory-input" placeholder="Your message"></textarea>
+                            <button id="send-btn" class="ivory-btn" onclick="sendEmail()">Send</button>
+                        </div>
+
+                        <div class="contacts-side">
+                            <p class="handwritten-title">Contacts: </p>
+                            <div class="contact-row">
+                                <img src="envelope.png" class="clean-icon" alt="Gmail">
+                                <span class="contact-handle">ryanvalencia709@gmail.com</span>
+                            </div>
+                            <div class="contact-row">
+                                <a href="https://github.com/ritsukasu" target="_blank">
+                                    <img src="github.png" class="clean-icon" alt="GitHub">
+                                </a>
+                                <span class="contact-handle">ritsukasu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rights-footer">
+                        Credits to the artists of the songs. Thank you for giving life to this website ♫⋆｡♪ ₊˚♬ ﾟ..
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="snow-container"></div>
+    <audio id="bg-music" loop preload="auto">
+        <source src="iu - i stan u.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
