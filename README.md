@@ -23,8 +23,8 @@
 5. Open `index.html` in your favorite browser.
 
 ## 🛠️ Customization
-To change the music playlist, update the `tracks` array in the JavaScript file:
+To change the music playlist, update the `playlist` array in the JavaScript file:
 ```javascript
-const tracks = [
+const playlist = [
     { name: "Song Name", src: "your-file.mp3" },
 ];
