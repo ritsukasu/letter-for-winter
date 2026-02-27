@@ -1,6 +1,6 @@
 # Valentine's day letter for Winter! ❄️
 
--- A fan made letter in the form of a website project for our Website Development program! (´｡• ᵕ •｡`) ♡
+-- A fan made valentine's day greeting letter in the form of a website project for our Website Development program! (´｡• ᵕ •｡`) ♡
 
 ## 🌐 Programming languages used
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
